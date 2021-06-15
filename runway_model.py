@@ -20,7 +20,7 @@ def setup(opts):
 
 
 generate_inputs = {
-    'w': runway.array(runway.vector(512, sampling_std=0.5)),
+    'w': runway.vector(9216, sampling_std=0.5),
     'label': runway.number(min=0, max=1000000, default=22, step=1), # generate random labels
     'scale': runway.number(min=-1, max=1, default=0.25, step=0.05),  # magnitude of labels - 0 = no labels
     'truncation': runway.number(min=-1.5, max=1.5, default=1, step=0.1)
