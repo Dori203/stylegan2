@@ -4,6 +4,7 @@ certifi==2018.11.29
 chardet==3.0.4
 Click==7.0
 Flask==1.0.2
+Flask-Compress==1.5.0
 Flask-Cors==3.0.7
 gast==0.2.2
 gevent==1.4.0
@@ -19,6 +20,7 @@ Markdown==3.0.1
 MarkupSafe==1.1.1
 mock==2.0.0
 numpy==1.16.2
+param==1.7.0
 pbr==5.1.2
 Pillow==5.4.1
 protobuf==3.6.1
