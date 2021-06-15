@@ -28,7 +28,7 @@ generate_inputs = {
 
 @runway.command('generate', inputs=generate_inputs, outputs={'image': runway.image})
 def convert(model, inputs):
-    w = inputs['w']
+    w = inputs['w'] #hi
     label = int(inputs['label'])
     scale = inputs['scale']
     truncation = inputs['truncation']
