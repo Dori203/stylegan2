@@ -32,7 +32,7 @@ def convert(model, inputs):
     label = int(inputs['label'])
     scale = inputs['scale']
     truncation = inputs['truncation']
-    latents = np.reshape(w,(1, 18, 512))
+    latents = np.reshape(w,(1, 18, 512)).astype(np.float16)
     labels = scale * np.random.RandomState(label).randn(167)
     labels = labels.reshape((1,167)).astype(np.float32)
     images = model.components.synthesis.run(latents, output_transform=fmt)
