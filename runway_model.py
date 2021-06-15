@@ -20,7 +20,7 @@ def setup(opts):
 
 
 generate_inputs = {
-    'z': runway.vector(512, sampling_std=0.5),
+    'w': runway.array(runway.vector(512, sampling_std=0.5)),
     'label': runway.number(min=0, max=1000000, default=22, step=1), # generate random labels
     'scale': runway.number(min=-1, max=1, default=0.25, step=0.05),  # magnitude of labels - 0 = no labels
     'truncation': runway.number(min=-1.5, max=1.5, default=1, step=0.1)
@@ -28,14 +28,14 @@ generate_inputs = {
 
 @runway.command('generate', inputs=generate_inputs, outputs={'image': runway.image})
 def convert(model, inputs):
-    z = inputs['z']
+    w = inputs['w']
     label = int(inputs['label'])
     scale = inputs['scale']
     truncation = inputs['truncation']
-    latents = z.reshape((1, 512))
+    # latents = w.reshape((1, 18, 512))
     labels = scale * np.random.RandomState(label).randn(167)
     labels = labels.reshape((1,167)).astype(np.float32)
-    images = model.run(latents, labels, truncation_psi=truncation, randomize_noise=False, output_transform=fmt)
+    images = model.run(w, labels, truncation_psi=truncation, randomize_noise=False, output_transform=fmt)
     output = np.clip(images[0], 0, 255).astype(np.uint8)
     return {'image': output}
 
